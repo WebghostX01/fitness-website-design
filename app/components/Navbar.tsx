@@ -83,9 +83,7 @@ export default function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden lg:block">
-          <Button href="#contact" size="sm">
-            Contact Us
-          </Button>
+          <Button href="#contact" fullWidth>Contact Us</Button>
         </div>
 
         {/* Hamburger (mobile and tablet only) */}

@@ -66,21 +66,21 @@ export default function Testimonials() {
   };
 
   return (
-    <section id="testimonials" className="px-12 pb-28 pt-24 text-white">
-      {/* Header row: title left, arrows right */}
-      <div className="flex items-end justify-between gap-6">
-        <div>
-          <span className="font-display font-bold text-xs uppercase tracking-wide text-lime-400">
+    <section id="testimonials" className="px-5 pb-28 pt-24 text-white md:px-12">
+      {/* Header: stacked on phones, a row from md up */}
+      <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div className="min-w-0">
+          <span className="font-display text-xs uppercase tracking-wide text-lime-400">
             Testimonial
           </span>
-          <h2 className="font-display font-bold mt-4 text-5xl uppercase leading-[0.95] lg:text-6xl">
-            Built for commitment
-            <br />
+          <h2 className="font-display mt-4 text-4xl uppercase leading-[0.95] sm:text-5xl lg:text-6xl">
+            Built for commitment{" "}
+            <br className="hidden sm:block" />
             proven by members
           </h2>
         </div>
 
-        <div className="flex gap-3">
+        <div className="flex shrink-0 gap-3">
           <button
             type="button"
             aria-label="Previous testimonial"
@@ -100,10 +100,10 @@ export default function Testimonials() {
         </div>
       </div>
 
-      {/* Cards: horizontal scroll-snap track that bleeds to the screen edges */}
+      {/* Cards: scroll-snap track that bleeds to the screen edges */}
       <div
         ref={trackRef}
-        className="-mx-12 mt-14 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-px-12 px-12 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="-mx-5 mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-px-5 px-5 md:-mx-12 md:mt-14 md:scroll-px-12 md:px-12 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {testimonials.map(({ name, role, avatar, quote }) => (
           <article
@@ -114,11 +114,19 @@ export default function Testimonials() {
 
             <div className="flex items-center justify-between gap-4">
               <div className="flex items-center gap-3">
-                <img
-                  src={avatar}
-                  alt={name}
-                  className="size-10 rounded-full object-cover"
-                />
+                {avatar ? (
+                  <img src={avatar} alt={name} className="size-10 rounded-full object-cover" />
+                ) : (
+                  <span
+                    aria-hidden
+                    className="grid size-10 place-items-center rounded-full bg-lime-400 text-sm font-semibold text-black"
+                  >
+                    {name
+                      .split(" ")
+                      .map((part) => part[0])
+                      .join("")}
+                  </span>
+                )}
                 <div>
                   <p className="text-sm font-semibold">{name}</p>
                   <p className="text-xs text-white/50">{role}</p>

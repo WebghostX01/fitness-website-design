@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
-import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import Link from "next/link";
+import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
 type Variant = "primary" | "secondary" | "light" | "dark";
 type Size = "sm" | "md";
@@ -9,6 +9,7 @@ type ButtonProps = {
   variant?: Variant;
   size?: Size;
   icon?: boolean;
+  fullWidth?: boolean; // always full width, at every screen size
   href?: string;
   children: ReactNode;
   className?: string;
@@ -18,7 +19,7 @@ const base =
   "font-display inline-flex items-center gap-3 rounded-full text-sm uppercase tracking-wide transition active:scale-95";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-lime-400 font-bold text-black hover:bg-lime-300",
+  primary: "bg-lime-400 text-black hover:bg-lime-300",
   secondary: "border border-white/15 bg-white/5 text-white backdrop-blur hover:bg-white/10",
   light: "bg-white text-black hover:bg-white/90",
   dark: "bg-black text-white hover:bg-black/90",
@@ -39,7 +40,8 @@ const sizes: Record<Size, { withIcon: string; plain: string; circle: string }> =
 export default function Button({
   variant = "primary",
   size = "md",
-  icon = variant !== "secondary", // arrow everywhere except the glass button
+  icon = variant !== "secondary",
+  fullWidth = false,
   href,
   children,
   className = "",
@@ -47,15 +49,15 @@ export default function Button({
 }: ButtonProps) {
   const s = sizes[size];
   const padding = icon ? s.withIcon : s.plain;
-  const classes = `${base} ${variants[variant]} ${padding} ${className}`;
+  const layout = fullWidth ? "w-full" : "w-full sm:w-auto"; // full on phones, natural width from 640px
+  const justify = icon ? "justify-between" : "justify-center"; // text left + arrow right, or centered text
+  const classes = `${base} ${variants[variant]} ${padding} ${layout} ${justify} ${className}`;
 
   const content = (
     <>
       {children}
       {icon && (
-        <span
-          className={`grid ${s.circle} place-items-center rounded-full ${circles[variant]}`}
-        >
+        <span className={`grid ${s.circle} place-items-center rounded-full ${circles[variant]}`}>
           <ArrowRight size={16} />
         </span>
       )}

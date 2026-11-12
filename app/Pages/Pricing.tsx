@@ -95,14 +95,9 @@ export default function Pricing() {
                   </span>
                 </p>
 
-                <Button
-                  href="#"
-                  variant={hl ? "dark" : "light"}
-                  icon
-                  className="mt-7 w-full justify-between font-bold"
-                >
-                  Get started now
-                </Button>
+                <Button href="#" variant={hl ? "dark" : "light"} fullWidth className="mt-7">
+  Get started now
+</Button>
 
                 <div
                   className={`my-6 border-t border-dashed ${

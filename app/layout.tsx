@@ -4,6 +4,11 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
+import { Anton, Plus_Jakarta_Sans } from "next/font/google";
+
+const anton = Anton({ weight: "400", subsets: ["latin"], variable: "--font-anton" });
+const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-jakarta" });
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -21,8 +26,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data--scroll-behavior="smooth">
-      <body className="bg-black">
+    <html lang="en" data-scroll-behavior="smooth" className={`${anton.variable} ${jakarta.variable}`}>
+  <body className="bg-black font-sans">
         <Navbar />
         {children}
         <Footer />
