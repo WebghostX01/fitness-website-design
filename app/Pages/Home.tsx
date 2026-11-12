@@ -11,7 +11,7 @@ export default function Hero() {
       <img
         src={typeof heroImage === "string" ? heroImage : heroImage.src}
         alt=""
-        className="absolute inset-0 size-full object-cover object-right"
+        className="absolute inset-0 size-full object-cover fit object-right"
       />
 
       {/* Overlay: darker all over on phones, left-weighted on desktop */}

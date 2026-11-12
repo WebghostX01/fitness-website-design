@@ -83,7 +83,7 @@ export default function Faq() {
                 }`}
               >
                 <div className="overflow-hidden">
-                  <p className="-mt-2 max-w-[640px] pb-8 text-sm leading-relaxed text-white/60">
+                  <p className="-mt-2 max-w-[640px] pb-8 pt-2 text-sm leading-relaxed text-white/60">
                     {answer}
                   </p>
                 </div>
