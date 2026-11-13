@@ -16,10 +16,10 @@ export default function Hero() {
       {/* Overlay: darker all over on phones, left-weighted on desktop */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80 lg:bg-gradient-to-r lg:from-black/60 lg:via-black/10 lg:to-transparent" />
 
-      {/* Content wrapper:
-          phones: at least one (stable) screen tall, paragraph on top, headline + buttons pinned to the bottom
-          desktop: fills the aspect-ratio box */}
-      <div className="relative flex min-h-svh flex-col justify-between gap-10 px-5 pb-10 pt-28 md:px-12 md:pb-12 lg:absolute lg:inset-0 lg:min-h-0 lg:pt-30">
+      {/* Content: a fixed-pixel minimum height on phones (no viewport units),
+          paragraph on top, headline + buttons pinned to the bottom.
+          On desktop it fills the aspect-ratio box instead. */}
+      <div className="relative flex min-h-[720px] flex-col justify-between gap-12 px-5 pb-10 pt-28 md:px-12 md:pb-12 lg:absolute lg:inset-0 lg:min-h-0 lg:pt-30">
         <p className="max-w-[390px] indent-12 text-base leading-snug text-white/90 md:indent-[105px]">
           This isn’t just a place to work out. It’s where discipline meets
           ambition, and every rep, every session, every drop of sweat brings
